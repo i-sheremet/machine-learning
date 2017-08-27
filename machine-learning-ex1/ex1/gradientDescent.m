@@ -18,9 +18,9 @@ for iter = 1:num_iters
     %
 
 
+    theta = theta - (alpha * (1 / m) * sum(repmat((X * theta - y),[1,2]).*X))';
 
-
-
+    % theta = theta - alpha * (1 / m) * sum(X'*(X * theta - y));
 
 
     % ============================================================
