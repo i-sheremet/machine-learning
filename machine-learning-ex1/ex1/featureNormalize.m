@@ -26,11 +26,7 @@ sigma = std(X);
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
-X(:,1) = X(:,1) - mu(1)
-X(:,2) = X(:,2) - mu(2)
-
-
-
+X_norm = (X - mu) ./ sigma
 
 
 
