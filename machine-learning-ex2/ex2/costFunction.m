@@ -20,12 +20,12 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% Vectorized implementation hints are taken from Resources/Week3 Lecture Notes:
+% https://www.coursera.org/learn/machine-learning/resources/Zi29t
+h = sigmoid(X * theta);
+J = (1 / m) * (-y' * log(h) - (1 - y)' * log(1 - h));
 
-
-
-
-
-
+grad = (1 / m) * sum((sigmoid(theta' .* X) - y) .* X);
 
 % =============================================================
 
