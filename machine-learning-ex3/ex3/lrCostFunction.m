@@ -37,13 +37,16 @@ grad = zeros(size(theta));
 %
 
 
+%%% Using the same formula here as for ex2::costFunctionReg. I've already implemented in vectorized way.
+non_reg_first_parameter = ones(size(theta));
+non_reg_first_parameter(1) = 0;
 
 
+h_x = sigmoid(X * theta);
 
+J = (1 / m) * (-y' * log(h_x) - (1 - y)' * log(1 - h_x)) + (lambda / (2 * m)) * sum(theta.^2 .* non_reg_first_parameter);
 
-
-
-
+grad = ((1 / m) * sum((h_x - y) .* X))' .+ (lambda / m) * (theta .* non_reg_first_parameter);
 
 % =============================================================
 
