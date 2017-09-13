@@ -35,7 +35,7 @@ X = [ones(m, 1) X];
 %       are dealing with large number of parameters.
 %
 % Example Code for fmincg:
-%
+%t
 %     % Set Initial theta
 %     initial_theta = zeros(n + 1, 1);
 %     
@@ -49,14 +49,18 @@ X = [ones(m, 1) X];
 %                 initial_theta, options);
 %
 
-initial_theta = zeros(n + 1, 1);
 options = optimset('GradObj', 'on', 'MaxIter', 50);
 
 for k = 1 : num_labels
 	fprintf('Loop %d started ...\n', k);
+	
+	initial_theta = zeros(n + 1, 1);
 	current_y = (y == k);
-    [all_theta, J] = fmincg (@(t)(lrCostFunction(t, X, current_y, lambda)), ...
+
+    [initial_theta] = fmincg (@(t)(lrCostFunction(t, X, current_y, lambda)), ...
     	initial_theta, options);
+    
+    all_theta(k,:) = initial_theta(:);
     fprintf('Cost(%d)  = %d\n', k, J);
 endfor
 
