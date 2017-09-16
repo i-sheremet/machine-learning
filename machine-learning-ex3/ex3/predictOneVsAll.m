@@ -32,7 +32,7 @@ X = [ones(m, 1) X];
 
 % [i, ix] = max(Array, [], 2) - i returns maximum value per raw, ix - it's index
 
-[temp, p] = max(sigmoid(X * theta'), [], 2);
+[temp, p] = max(sigmoid(X * all_theta'), [], 2);
 
 
 % =========================================================================
