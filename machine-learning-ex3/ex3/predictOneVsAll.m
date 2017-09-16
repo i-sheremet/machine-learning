@@ -30,13 +30,10 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% [i, ix] = max(Array, [], 2) - i returns maximum value per raw, ix - it's index
 
-
-
-
+[temp, p] = max(sigmoid(X * theta'), [], 2);
 
 
 % =========================================================================
-
-
 end
