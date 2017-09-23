@@ -63,22 +63,16 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 
+y_matrix = eye(num_labels)(y,:);
 
+A1 = [ones(m, 1) X]; % adding bias unit to first layer A1(X)
 
+A2 = sigmoid(A1 * Theta1'); % computing A2
+A2 = [ones(m, 1) A2]; % adding bias unit to second layer A2
 
+A3 = sigmoid(A2 * Theta2');
 
-
-
-
-
-
-
-
-
-
-
-
-
+J = (1 / m) * sum(sum(-y_matrix .* log(A3) - (1 - y_matrix) .* log(1 - A3)));
 
 % -------------------------------------------------------------
 
