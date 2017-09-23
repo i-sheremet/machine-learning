@@ -74,6 +74,16 @@ A3 = sigmoid(A2 * Theta2');
 
 J = (1 / m) * sum(sum(-y_matrix .* log(A3) - (1 - y_matrix) .* log(1 - A3)));
 
+
+[theta1_rows, theta1_columns] = size(Theta1);
+theta1_reg_matrix = [zeros(theta1_rows, 1), ones(size(Theta1(:,2:theta1_columns)))]; % theta1 size matrix of ones and first row zeros
+[theta2_rows, theta2_columns] = size(Theta2);
+theta2_reg_matrix = [zeros(theta2_rows, 1), ones(size(Theta2(:,2:theta2_columns)))]; % theta2 size matrix of ones and first row zeros
+
+J_reg = (lambda / (2 * m)) * (sum(sum(Theta1 .^ 2 .* theta1_reg_matrix)) + sum(sum(Theta2 .^ 2 .* theta2_reg_matrix)));
+
+
+J += J_reg; 
 % -------------------------------------------------------------
 
 % =========================================================================
