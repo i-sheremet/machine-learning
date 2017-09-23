@@ -67,10 +67,10 @@ y_matrix = eye(num_labels)(y,:);
 
 A1 = [ones(m, 1) X]; % adding bias unit to first layer A1(X)
 
-A2 = sigmoid(A1 * Theta1'); % computing A2
+A2 = sigmoid(A1 * Theta1'); % computing A2, sigmoid(z2 = A1 * Theta1')
 A2 = [ones(m, 1) A2]; % adding bias unit to second layer A2
 
-A3 = sigmoid(A2 * Theta2');
+A3 = sigmoid(A2 * Theta2'); % computing A3, sigmoid(z3 = A2 * Theta2')
 
 J = (1 / m) * sum(sum(-y_matrix .* log(A3) - (1 - y_matrix) .* log(1 - A3)));
 
@@ -83,12 +83,30 @@ theta2_reg_matrix = [zeros(theta2_rows, 1), ones(size(Theta2(:,2:theta2_columns)
 J_reg = (lambda / (2 * m)) * (sum(sum(Theta1 .^ 2 .* theta1_reg_matrix)) + sum(sum(Theta2 .^ 2 .* theta2_reg_matrix)));
 
 
-J += J_reg; 
+J += J_reg;
 % -------------------------------------------------------------
+	
+d3 = A3 - y_matrix;
+
+z2 = A1 * Theta1';
+d2 = (d3 * Theta2(:,2:end)) .* sigmoidGradient(z2);	
+
+Delta1 = d2' * A1;
+Delta2 = d3' * A2;
+
+Theta1(:,1) = 0;
+Theta2(:,1) = 0;
+
+Theta1 = Theta1 .* (lambda / m);
+Theta2 = Theta2 .* (lambda / m);
+
+Theta1_grad = Delta1 .* 1/m + Theta1;
+Theta2_grad = Delta2 .* 1/m + Theta2;
 
 % =========================================================================
 
 % Unroll gradients
+
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
