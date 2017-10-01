@@ -20,12 +20,12 @@ grad = zeros(size(theta));
 %
 non_reg_first_parameter = ones(size(theta));
 non_reg_first_parameter(1) = 0;
-J = (1 / (2 * m)) * sum((X * theta - y).^2) + (lambda / (2 * m)) * sum(theta.^2 .* non_reg_first_parameter);
 
+h_x = X * theta;
 
+J = (1 / (2 * m)) * sum((h_x - y).^2) + (lambda / (2 * m)) * sum(theta.^2 .* non_reg_first_parameter);
 
-
-
+grad = ((1 / m) * sum((h_x - y) .* X))' .+ (lambda / m) * (theta .* non_reg_first_parameter);
 
 % =========================================================================
 
