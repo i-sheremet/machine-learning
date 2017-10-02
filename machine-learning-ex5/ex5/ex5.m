@@ -72,58 +72,58 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-% %% =========== Part 4: Train Linear Regression =============
-% %  Once you have implemented the cost and gradient correctly, the
-% %  trainLinearReg function will use your cost function to train 
-% %  regularized linear regression.
-% % 
-% %  Write Up Note: The data is non-linear, so this will not give a great 
-% %                 fit.
-% %
+%% =========== Part 4: Train Linear Regression =============
+%  Once you have implemented the cost and gradient correctly, the
+%  trainLinearReg function will use your cost function to train 
+%  regularized linear regression.
+% 
+%  Write Up Note: The data is non-linear, so this will not give a great 
+%                 fit.
+%
 
-% %  Train linear regression with lambda = 0
-% lambda = 0;
-% [theta] = trainLinearReg([ones(m, 1) X], y, lambda);
+%  Train linear regression with lambda = 0
+lambda = 0;
+[theta] = trainLinearReg([ones(m, 1) X], y, lambda);
 
-% %  Plot fit over the data
-% plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
-% xlabel('Change in water level (x)');
-% ylabel('Water flowing out of the dam (y)');
-% hold on;
-% plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
-% hold off;
+%  Plot fit over the data
+plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+xlabel('Change in water level (x)');
+ylabel('Water flowing out of the dam (y)');
+hold on;
+plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
+hold off;
 
-% fprintf('Program paused. Press enter to continue.\n');
-% pause;
+fprintf('Program paused. Press enter to continue.\n');
+pause;
 
 
-% %% =========== Part 5: Learning Curve for Linear Regression =============
-% %  Next, you should implement the learningCurve function. 
-% %
-% %  Write Up Note: Since the model is underfitting the data, we expect to
-% %                 see a graph with "high bias" -- Figure 3 in ex5.pdf 
-% %
+%% =========== Part 5: Learning Curve for Linear Regression =============
+%  Next, you should implement the learningCurve function. 
+%
+%  Write Up Note: Since the model is underfitting the data, we expect to
+%                 see a graph with "high bias" -- Figure 3 in ex5.pdf 
+%
 
-% lambda = 0;
-% [error_train, error_val] = ...
-%     learningCurve([ones(m, 1) X], y, ...
-%                   [ones(size(Xval, 1), 1) Xval], yval, ...
-%                   lambda);
+lambda = 0;
+[error_train, error_val] = ...
+    learningCurve([ones(m, 1) X], y, ...
+                  [ones(size(Xval, 1), 1) Xval], yval, ...
+                  lambda);
 
-% plot(1:m, error_train, 1:m, error_val);
-% title('Learning curve for linear regression')
-% legend('Train', 'Cross Validation')
-% xlabel('Number of training examples')
-% ylabel('Error')
-% axis([0 13 0 150])
+plot(1:m, error_train, 1:m, error_val);
+title('Learning curve for linear regression')
+legend('Train', 'Cross Validation')
+xlabel('Number of training examples')
+ylabel('Error')
+axis([0 13 0 150])
 
-% fprintf('# Training Examples\tTrain Error\tCross Validation Error\n');
-% for i = 1:m
-%     fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
-% end
+fprintf('# Training Examples\tTrain Error\tCross Validation Error\n');
+for i = 1:m
+    fprintf('  \t%d\t\t%f\t%f\n', i, error_train(i), error_val(i));
+end
 
-% fprintf('Program paused. Press enter to continue.\n');
-% pause;
+fprintf('Program paused. Press enter to continue.\n');
+pause;
 
 % %% =========== Part 6: Feature Mapping for Polynomial Regression =============
 % %  One solution to this is to use polynomial regression. You should now

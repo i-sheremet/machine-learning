@@ -52,10 +52,24 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
+% lambda = 0;
+
+for i = 1:m
+	fprintf(['Iteration: %f \n'], i);
+
+	x_init = X(1:i, :);
+	y_init = y(1:i, :);
+	m_xinit = size(x_init, 1)
 
 
+	[theta] = trainLinearReg(x_init, y_init, lambda);
+	h_x = x_init * theta;
+	error_train(i) = (1 / (2 * m_xinit)) * sum((h_x - y_init).^2);
 
-
+	m_xval = size(Xval, 1);
+	h_x_val = Xval * theta;
+	error_val(i) = (1 / (2 * m_xval)) * sum((h_x_val - yval).^2);
+end
 
 
 
