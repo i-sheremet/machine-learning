@@ -77,62 +77,62 @@ pause;
 %  plot the data. 
 %
 
-fprintf('Loading and Visualizing Data ...\n')
+% fprintf('Loading and Visualizing Data ...\n')
 
-% Load from ex6data2: 
-% You will have X, y in your environment
-load('ex6data2.mat');
+% % Load from ex6data2: 
+% % You will have X, y in your environment
+% load('ex6data2.mat');
 
-% Plot training data
-plotData(X, y);
+% % Plot training data
+% plotData(X, y);
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
-%% ========== Part 5: Training SVM with RBF Kernel (Dataset 2) ==========
-%  After you have implemented the kernel, we can now use it to train the 
-%  SVM classifier.
-% 
-fprintf('\nTraining SVM with RBF Kernel (this may take 1 to 2 minutes) ...\n');
+% % ========== Part 5: Training SVM with RBF Kernel (Dataset 2) ==========
+%  % After you have implemented the kernel, we can now use it to train the 
+%  % SVM classifier.
 
-% Load from ex6data2: 
-% You will have X, y in your environment
-load('ex6data2.mat');
+% fprintf('\nTraining SVM with RBF Kernel (this may take 1 to 2 minutes) ...\n');
 
-% SVM Parameters
-C = 1; sigma = 0.1;
+% % Load from ex6data2: 
+% % You will have X, y in your environment
+% load('ex6data2.mat');
 
-% We set the tolerance and max_passes lower here so that the code will run
-% faster. However, in practice, you will want to run the training to
-% convergence.
-model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)); 
-visualizeBoundary(X, y, model);
+% % SVM Parameters
+% C = 1; sigma = 0.1;
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% % We set the tolerance and max_passes lower here so that the code will run
+% % faster. However, in practice, you will want to run the training to
+% % convergence.
+% model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma)); 
+% visualizeBoundary(X, y, model);
+
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 %% =============== Part 6: Visualizing Dataset 3 ================
 %  The following code will load the next dataset into your environment and 
 %  plot the data. 
 %
 
-fprintf('Loading and Visualizing Data ...\n')
+% fprintf('Loading and Visualizing Data ...\n')
 
-% Load from ex6data3: 
-% You will have X, y in your environment
-load('ex6data3.mat');
+% % Load from ex6data3: 
+% % You will have X, y in your environment
+% load('ex6data3.mat');
 
-% Plot training data
-plotData(X, y);
+% % Plot training data
+% plotData(X, y);
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
-%% ========== Part 7: Training SVM with RBF Kernel (Dataset 3) ==========
+% ========== Part 7: Training SVM with RBF Kernel (Dataset 3) ==========
 
-%  This is a different dataset that you can use to experiment with. Try
-%  different values of C and sigma here.
-% 
+ % This is a different dataset that you can use to experiment with. Try
+ % different values of C and sigma here.
+
 
 % Load from ex6data3: 
 % You will have X, y in your environment
