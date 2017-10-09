@@ -23,6 +23,35 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
+sigma_vector = [0.01 0.03 0.1 0.3 1 3 10 30];
+C_vector = [0.01 0.03 0.1 0.3 1 3 10 30];
+
+C_test = C_vector(1);
+sigma_test = sigma_vector(1);
+
+m = size(C_vector, 2);
+n = size(sigma_vector, 2);
+mn = 1;
+
+for i = 1:m
+	C_test = C_vector(i);
+	for j = 1:n
+		C_test
+		sigma_test = sigma_vector(j)
+		model= svmTrain(X, y, C_test, @(x1, x2) gaussianKernel(x1, x2, sigma_test)); 
+		predictions = svmPredict(model, Xval);
+		mn_test = mean(double(predictions ~= yval));
+
+		if (mn_test < mn)
+			mn = mn_test;
+			C = C_test
+			sigma = sigma_test
+			fprintf(['Mean updated to %f \n'], mn);
+		endif
+
+	endfor
+endfor
+
 
 
 
