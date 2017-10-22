@@ -20,12 +20,20 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+m = size(X,1);
+n = size(centroids,1);
 
-
-
-
-
-
+for i=1:m
+	idx(i) = 1;
+	prev_d = norm(X(i,:) - centroids(1,:), 2);
+	for j=1:n
+		d = norm(X(i,:) - centroids(j,:), 2);
+		if (prev_d > d)
+			idx(i) = j;
+			prev_d = d;
+		end
+    end
+end
 
 % =============================================================
 
